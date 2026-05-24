@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/styles/global.css">
+    <title>Document</title>
+</head>
+<body>
+  <div id="app" class="dashboard">
+
+    <!-- TODO WIDGET -->
+    <section class="widget" id="todoWidget">
+      <h2>Todos</h2>
+
+      <input id="todoInput" placeholder="Add todo" />
+      <button id="addTodoBtn">Add</button>
+
+      <div class="filters">
+        <select id="filterSelect">
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+
+      <ul id="todoList"></ul>
+    </section>
+
+    <!-- ANALYTICS WIDGET -->
+    <section class="widget" id="analyticsWidget">
+      <h2>Analytics</h2>
+      <div id="analytics"></div>
+    </section>
+
+    <!-- WEATHER WIDGET -->
+    <section class="widget" id="weatherWidget">
+      <h2>Weather</h2>
+      <div id="weather"></div>
+    </section>
+
+    <!-- QUOTES WIDGET -->
+    <section class="widget" id="quoteWidget">
+      <h2>Quote</h2>
+      <div id="quote"></div>
+    </section>
+
+    <!-- NOTIFICATIONS -->
+    <div id="notifications"></div>
+
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
