@@ -3,24 +3,13 @@ import { emit } from "../../core/events/eventBus.js";
 
 export function addTodo(text) {
   const { todos } = getState();
-  const newTodo = { id: Date.now(), text, completed: false};
+  const newTodo = { id: Date.now(), text, completed: false, editing: false };
 
   setState({
     todos: [...todos, newTodo]
   });
 
   emit("todo:added", newTodo);
-}
-
-export function updateTodo(id, newText) {
-    const { todos } = getState();
-    const updatedTodos = todos.map(todo => todo.id === id
-        ? { ...todo, text: newText }
-        : todo
-    );
-    
-     setState({ todos: updatedTodos });
-     emit("todo:updated", { id, text: newText });
 }
 
 export function deleteTodo(id) {
@@ -49,4 +38,37 @@ export function toggleTodo(id) {
 
 export function setFilter(filter) {
   setState({ filter });
+}
+
+export function startEdit(todo) {
+  setState({
+    editingId: todo.id
+  });
+
+  const input = document.getElementById("todoInput");
+  const btn = document.getElementById("addTodoBtn");
+
+  input.value = todo.text;
+  btn.textContent = "Update";
+
+  emit("todo:editing", todo);
+}
+
+export function editTodo(id, newText) {
+  const { todos } = getState();
+  const updatedTodos = todos.map((todo) => {
+    if (todo.id === id) {
+      return {
+        ...todo,
+        text: newText
+      };
+    }
+    return todo;
+  });
+
+  setState({
+    todos: updatedTodos
+  });
+
+  emit("todo:updated", { id, newText });
 }

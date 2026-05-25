@@ -12,6 +12,9 @@ It demonstrates scalable UI architecture, state management, and persistent clien
 - Task analytics (basic insights & counts)
 - Notification feedback system
 - Persistent data using localStorage
+- Weather widget (API integration)
+- Quote generator module
+- Enhanced analytics dashboard
 
 ---
 
@@ -34,15 +37,6 @@ This separation ensures scalability and maintainability as features grow.
 - CSS
 - Vanilla JavaScript (ES6+)
 - localStorage API
-
----
-
-## 📌 Upcoming Features
-
-- Weather widget (API integration)
-- Quote generator module
-- Enhanced analytics dashboard
-- UI/UX improvements
 
 ---
 

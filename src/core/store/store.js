@@ -18,7 +18,11 @@ function loadState() {
     todos: [],
     weather: null,
     theme: "light",
-    filter: "all"
+    filter: "all", 
+    editingId: null,
+
+    weatherLoading: false,
+    weatherError: null,
   };
 }
 let state = loadState();

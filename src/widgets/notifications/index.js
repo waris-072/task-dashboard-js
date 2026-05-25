@@ -14,4 +14,15 @@ export function initNotifications() {
     const status = todo.completed ? "completed" : "marked as pending";
     showNotification(`Todo ${status}`);
   });
+
+  on("todo:editing", (todo) => {
+    showNotification(`Start Editing Todo: ${todo.text}`);
+  });
+  on("todo:updated", (todo) => {
+    showNotification(`Todo Updated to: ${todo.newText}`);
+  });
+
+  on("weather:error", (message) => {
+    showNotification(message);
+  });
 }

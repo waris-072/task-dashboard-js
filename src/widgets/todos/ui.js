@@ -1,5 +1,5 @@
 import { getState } from "../../core/store/store.js";
-import { deleteTodo, toggleTodo, updateTodo } from "./actions.js";
+import { deleteTodo, toggleTodo, startEdit} from "./actions.js";
 
 export function renderTodos() {
   const list = document.getElementById("todoList");
@@ -33,9 +33,7 @@ export function renderTodos() {
     const editBtn = document.createElement("button");
     editBtn.innerText = "Edit";
     editBtn.addEventListener("click", () =>{
-        const newText = prompt("Edit todo:", todo.text);
-        if (!newText || !newText.trim()) return;
-        updateTodo(todo.id, newText.trim());
+      startEdit(todo);
     });
 
     const dltBtn = document.createElement("button");

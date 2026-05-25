@@ -1,16 +1,34 @@
-import { addTodo } from "./actions.js";
+import { addTodo, editTodo, setFilter } from "./actions.js";
 import { renderTodos } from "./ui.js";
-import { subscribe } from "../../core/store/store.js";
+import { subscribe, getState, setState } from "../../core/store/store.js";
+
 
 export function initTodos() {
+
   const btn = document.getElementById("addTodoBtn");
+  const input = document.getElementById("todoInput");
+
+  const filterSelect = document.getElementById("filterSelect");
+  filterSelect.addEventListener("change", (e) => {
+    setFilter(e.target.value);
+  });
 
   btn.addEventListener("click", () => {
-    const input = document.getElementById("todoInput");
     const text = input.value.trim();
-
     if (!text) return;
-    addTodo(text);
+    const { editingId } = getState();
+ 
+    if (editingId !== null) {
+      editTodo(editingId, text);
+      setState({
+        editingId: null
+      });
+      btn.textContent = "Add";
+    }
+    else {
+      addTodo(text);
+    }
+
     input.value = "";
   });
 
